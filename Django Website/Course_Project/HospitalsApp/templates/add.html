@@ -1,0 +1,45 @@
+{% extends "auth_layout.html" %}
+{% load static %}
+
+{% block jsscripts %}
+    <script src="{% static 'scripts/addUpdate.js' %}"></script>
+{% endblock jsscripts %}
+
+{% block content %}
+    <h1>Add a New Hospital</h1>
+    {% if messages %}
+        <br/>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% else %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <hr/>
+    <div class="col-md-4 text-center offset-md-4">
+        <fieldset id="panel">
+            <form action="" method="post" class="form">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field != visible %}
+                        <div class="row g-3 align-items">
+                            <div class="col-auto" >
+                                <label for="{{ field.label|lower }}" class="form-label">
+                                    {{ field.label }}
+                                </label>
+                            </div>
+                            <div class="col-12">
+                                {{ field }}<br/>
+                            </div>
+                        </div>
+                        {{ field.errors }}
+                    {% endif %}
+                {% endfor %}
+                <a href="/HospitalsApp/home" class="btn btn-secondary" role="button" aria-pressed="true"><i class="bi bi-arrow-left"></i> Back</a>
+                <button type="submit" class="btn btn-success"><i class="bi bi-database-add"></i> Add</button>
+            </form>
+        </fieldset>
+    </div>
+{% endblock content %}

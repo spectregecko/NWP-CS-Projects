@@ -1,0 +1,31 @@
+{% extends "auth_layout.html" %}
+
+{% block content %}
+    <h1>Delete an Existing Hospital</h1>
+    {% if messages %}
+        <br/>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% else %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <hr/>
+    <div class="col-md-4 text-center offset-md-4">
+        <fieldset id="panel">
+            <form action="" method="post" class="form">
+                {% csrf_token %}
+                <div class="row g-3 align-items">
+                    <div class="col-12">
+                        <label>Are you sure you want to delete {{ pk }}?</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger" value="Yes" name="yes"><i class="bi bi-trash"></i> Yes</button>
+                <button type="submit" class="btn btn-secondary" value="No" name="no"><i class="bi bi-x-square"></i> No</button>
+            </form>
+        </fieldset>
+    </div>
+
+{% endblock content %}

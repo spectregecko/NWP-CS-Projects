@@ -1,0 +1,43 @@
+.navbar {
+  background-color: #dc3545;
+}
+
+thead {
+  background-color: rgb(150, 150, 150);
+}
+
+#panel, tbody {
+  background-color: rgb(175, 175, 175);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.table thead th {
+  border-bottom: none;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+h1 {
+  text-align: center;
+  padding: 1rem;
+}
+
+body {
+  background-color: rgb(213, 213, 213);
+  background-image: url('../images/S_841_081110.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+div label {
+  font-weight: bold;
+}
+
+.errorlist li {
+  text-align: left;
+}

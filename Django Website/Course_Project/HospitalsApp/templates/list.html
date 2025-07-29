@@ -1,0 +1,63 @@
+{% extends "auth_layout.html" %}
+{% block content %}
+    <h1>Hospital Directory</h1>
+    {% if messages %}
+        <br/>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% else %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <fieldset id="panel">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Zip Code</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for hospital in hospital_list %}
+                                {% if hospital.visible == True %}
+                                    <tr>
+                                        <td>{{ hospital.name }}</td>
+                                        <td>
+                                            {% if hospital.zip_code|length == 6 %}
+                                                {{ hospital.zip_code|slice:":3" }} {{ hospital.zip_code|slice:"3:" }}
+                                            {% elif hospital.zip_code|length == 5 %}
+                                                {{ hospital.zip_code }}
+                                            {% else %}
+                                                {{ hospital.zip_code|slice:":5" }}-{{ hospital.zip_code|slice:"5:" }}
+                                            {% endif %}
+                                        </td>
+                                        <td>({{ hospital.phone|slice:":3" }}) {{ hospital.phone|slice:"4:" }}</td>
+                                        <td>{{ hospital.type }}</td>
+                                        <td>{{ hospital.email }}</td>
+                                        <td>
+                                            <a href="/HospitalsApp/list/{{ hospital.name }}" class="btn btn-primary" role="button" aria-pressed="true"><i class="bi bi-eye"></i></a>
+                                            <a href="/HospitalsApp/update/{{ hospital.name }}" class="btn btn-success" role="button" aria-pressed="true"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="/HospitalsApp/delete/{{ hospital.name }}" class="btn btn-danger" role="button" aria-pressed="true"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="/HospitalsApp/home" class="btn btn-secondary" role="button" aria-pressed="true"><i class="bi bi-arrow-left"></i> Back</a>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}

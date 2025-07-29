@@ -1,0 +1,139 @@
+a:link, a:visited {
+    font-weight: bold;
+    color: red;
+}
+body {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 50px;
+}
+button, input[type="submit"], summary {
+    color: white;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(0, 215, 0);
+    padding: 10px;
+    border-style: none;
+    border-radius: 1em;
+    width: 5em;
+}
+button:hover, input[type="submit"]:hover, summary:hover {
+    background-color: rgb(174, 255, 0);
+    color: rgb(111, 111, 111);
+    transition: color 0.5s, background-color 0.5s;
+}
+div {
+    color: #333333;
+}
+details {
+    width: 100%;
+}
+details, fieldset {
+    display: inline;
+}
+#error {
+    color: red;
+}
+fieldset {
+    background-color: #cccccc;
+    border: 2px solid #333333;
+    border-radius: 1em;
+}
+fieldset p {
+    color: #333333;
+}
+footer {
+    background-color: #cccccc;
+    bottom: 0;
+    color: #333333;
+    position: fixed;
+    text-indent: 1em;
+    width: 100%;
+    text-align: left;
+}
+header {
+    background-color: #cccccc;
+    color: #333333;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+}
+h1 {
+    margin: 0;
+    padding: 10px;
+}
+h2 {
+    margin-top: 56px;;
+}
+h2, #message {
+    background-color: rgba(0,0,0,0.75);
+    display: inline-block;
+    padding: 0.5em;
+    border-radius: 1em;
+}
+html {
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+input[type="text"], input[type="password"], input[type="number"] {
+    height: 32px;
+    width: 360px;
+    font-size: 24px;
+}
+#itemID, #itemName, #option, #price, #unitsInStock, #visible {
+    border: solid 1px black;
+    display: table-cell;
+    padding: 0.5em;
+    text-align: center;
+    vertical-align: middle;
+}
+#itemID, #unitsInStock {
+    width: 3.5em;
+}
+#itemName {
+    width: 10em;
+}
+label {
+    float: left;
+    font-weight: bold;
+    text-align: left;
+    width: 180px;
+    padding-top: 0.6em;
+    color: #333333;
+}
+#message {
+    margin-top: 0;
+}
+#option, #visible {
+    width: 4em;
+}
+.pk {
+    background-color: black;
+    color: white;
+}
+#price {
+    width: 5em;
+}
+#prompt {
+    text-align: center;
+}
+#promptBody {
+    text-align: left;
+}
+summary {
+    width: 3.8em;
+}
+/*.themed-grid-col {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+}*/

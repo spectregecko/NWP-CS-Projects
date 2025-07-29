@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block jsscripts %}
+    <script src="{% static 'scripts/registration.js' %}"></script>
+{% endblock jsscripts %}
+
+{% block content %}
+    <h1>User Registration</h1>
+    {% if messages %}
+        <br/>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% else %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <hr/>
+    <div class="col-md-4 text-center offset-md-4">
+        <fieldset id="panel">
+            <form method="post" action="">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="row g-3 align-items">
+                        <div class="col-auto">
+                            <label for="{{ field.label|lower }}" class="form-label">
+                                {{ field.label }}
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            {{ field }}<br/>
+                        </div>
+                    </div>
+                    {% if field == form.username %}
+                        <ul class="errorlist">
+                            <li>
+                                {{ field.help_text }}
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {{ field.errors }}
+                {% endfor %}
+                <a href="/HospitalsApp/login" class="btn btn-secondary" role="button" aria-pressed="true"><i class="bi bi-arrow-left"></i> Back</a>
+                <button type="submit" class="btn btn-success"><i class="bi bi-person-add"></i> Register</button>
+            </form>
+        </fieldset>
+    </div>
+
+{% endblock content %}

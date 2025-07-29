@@ -1,0 +1,81 @@
+{% extends "auth_layout.html" %}
+{% load static %}
+
+{% block jsscripts %}
+    <script src="{% static 'scripts/addUpdate.js' %}"></script>
+{% endblock jsscripts %}
+
+{% block content %}
+    <h1>Update a Hospital</h1>
+    {% if messages %}
+        <br/>
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% else %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <hr/>
+    <div class="col-md-4 text-center offset-md-4">
+        <fieldset id="panel">
+            <form action="" method="post" class="form">
+                {% csrf_token %}
+                <div class="row g-3 align-items">
+                    <div class="col-auto">
+                        <label for="name" class="form-label">
+                            Name
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="name" class="form-control" placeholder="Example Hospital" maxlength="100" required id="id_name" value="{{ hospital.name }}"><br/>
+                    </div>
+                </div>
+                <div class="row g-3 align-items">
+                    <div class="col-auto">
+                        <label for="zip code" class="form-label">
+                            Zip code
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="zip_code" class="form-control" placeholder="Canadian or American" maxlength="10" required id="id_zip_code" value="{{ hospital.zip_code }}"><br/>
+                    </div>
+                </div>
+                <div class="row g-3 align-items">
+                    <div class="col-auto">
+                        <label for="phone" class="form-label">
+                            Phone
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="phone" class="form-control" placeholder="234-567-8901" maxlength="12" required id="id_phone" value="{{ hospital.phone }}"><br/>
+                    </div>
+                </div>
+                <div class="row g-3 align-items">
+                    <div class="col-auto">
+                        <label for="type" class="form-label">
+                            Type
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="type" class="form-control" placeholder="Public/Private/Nonprofit" maxlength="9" required id="id_type" value="{{ hospital.type }}"><br/>
+                    </div>
+                </div>
+                <div class="row g-3 align-items">
+                    <div class="col-auto">
+                        <label for="email" class="form-label">
+                            Email
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="email" class="form-control" placeholder="someone@example.ca" maxlength="50" required id="id_email" value="{{ hospital.email }}"><br/>
+                    </div>
+                </div>
+                <input type="hidden" name="pk" value="{{ hospital.name }}">
+                <button type="submit" class="btn btn-secondary" value="Cancel" name="cancel"><i class="bi bi-x-square"></i> Cancel</button>
+                <button type="submit" class="btn btn-success" value="Update" name="update"><i class="bi bi-floppy"></i> Update</button>
+            </form>
+        </fieldset>
+    </div>
+{% endblock content %}
