@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Bohr Model of an Atom</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="575" height="575">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <br>
+      Protons: <span id="protonCount"></span> |
+      Neutrons: <span id="neutronCount"></span> |
+      Electrons: <span id="electronCount"></span>
+    <br>
+      Subatomic Particles
+      <button type="button" onclick="addParticle()">+</button>
+      <button type="button" onclick="subParticle()">-</button>
+    <br>
+      E - Toggle Excited State
+    <br>
+      ↑↓ Speed ←→ Rotate
+    <br>
+      Space - Pause
+    <br>
+      Zoom
+      <input type="range" name="zoomSlider" min="1" max="100" value="1" step="1" onchange="updateValues(this.value);"> <span id="zoom"></span>
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/cuon-matrix.js"></script>
+    <script src="BohrModel.js"></script>
+  </body>
+</html>
