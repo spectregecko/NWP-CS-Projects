@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2021 at 08:47 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Aug 03, 2025 at 01:10 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `courseproject`
+-- Database: `project`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE `coaches` (
   `PostalCode` varchar(7) DEFAULT NULL,
   `Country` varchar(3) DEFAULT NULL,
   `Email` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `coaches`
@@ -66,7 +66,7 @@ CREATE TABLE `doctors` (
   `PostalCode` varchar(9) DEFAULT NULL,
   `Country` varchar(11) DEFAULT NULL,
   `Phone` varchar(17) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `doctors`
@@ -96,7 +96,7 @@ CREATE TABLE `hospitals` (
   `PostalCode` varchar(9) DEFAULT NULL,
   `Country` varchar(11) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `hospitals`
@@ -121,29 +121,30 @@ CREATE TABLE `items` (
   `ItemID` tinyint(4) NOT NULL,
   `ItemName` varchar(32) DEFAULT NULL,
   `Price` decimal(7,4) DEFAULT NULL,
-  `UnitsInStock` smallint(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `UnitsInStock` smallint(6) DEFAULT NULL,
+  `Visible` int(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`ItemID`, `ItemName`, `Price`, `UnitsInStock`) VALUES
-(1, 'Cereal', '18.0000', 39),
-(2, 'Tea', '19.0000', 17),
-(3, 'Corn Syrup', '10.0000', 13),
-(4, 'Seasoning Salt', '22.0000', 53),
-(5, 'Cumin Powder', '21.3500', 0),
-(6, 'Bread Slices', '25.0000', 120),
-(7, 'Feta Cheese', '30.0000', 15),
-(8, 'Chedder Cheese', '40.0000', 6),
-(9, 'Noodles', '97.0000', 29),
-(10, 'Beans', '31.0000', 31),
-(11, 'Milk', '21.0000', 22),
-(12, 'Eggs', '38.0000', 86),
-(13, 'Rice', '6.0000', 24),
-(14, 'Tofu', '23.2500', 35),
-(15, 'Pasta', '15.5000', 39);
+INSERT INTO `items` (`ItemID`, `ItemName`, `Price`, `UnitsInStock`, `Visible`) VALUES
+(1, 'Cereal', 18.0000, 39, 1),
+(2, 'Tea', 19.0000, 17, 1),
+(3, 'Corn Syrup', 10.0000, 13, 1),
+(4, 'Seasoning Salt', 22.0000, 53, 1),
+(5, 'Cumin Powder', 21.3500, 0, 1),
+(6, 'Bread Slices', 25.0000, 120, 1),
+(7, 'Feta Cheese', 30.0000, 15, 1),
+(8, 'Chedder Cheese', 40.0000, 6, 1),
+(9, 'Noodles', 97.0000, 29, 1),
+(10, 'Beans', 31.0000, 31, 1),
+(11, 'Milk', 21.0000, 22, 1),
+(12, 'Eggs', 38.0000, 86, 1),
+(13, 'Rice', 6.0000, 24, 1),
+(14, 'Tofu', 23.2500, 35, 1),
+(15, 'Pasta', 15.5000, 39, 1);
 
 -- --------------------------------------------------------
 
@@ -157,7 +158,7 @@ CREATE TABLE `organizations` (
   `Address` varchar(80) DEFAULT NULL,
   `PostalCode` varchar(9) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `organizations`
@@ -186,7 +187,7 @@ CREATE TABLE `patients` (
   `PostalCode` varchar(9) DEFAULT NULL,
   `Country` varchar(11) DEFAULT NULL,
   `Phone` varchar(17) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `patients`
@@ -219,7 +220,7 @@ CREATE TABLE `players` (
   `PostalCode` varchar(7) DEFAULT NULL,
   `Country` varchar(3) DEFAULT NULL,
   `Phone` varchar(14) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `players`
@@ -248,7 +249,7 @@ CREATE TABLE `schools` (
   `Address` varchar(80) DEFAULT NULL,
   `PostalCode` varchar(9) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `schools`
@@ -274,19 +275,19 @@ CREATE TABLE `sports` (
   `SportName` varchar(68) DEFAULT NULL,
   `TrainingHours` varchar(2) DEFAULT NULL,
   `MonthlyFee` decimal(8,4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `sports`
 --
 
 INSERT INTO `sports` (`SportID`, `SportName`, `TrainingHours`, `MonthlyFee`) VALUES
-('BKBLL01', 'Jonir Basketball', '75', '600.0000'),
-('BKBLL02', 'Advanced Basketball', '80', '450.0000'),
-('BSBLL01', 'Baseball for Beginners', '80', '450.0000'),
-('BSBLL02', 'Baseball for Advanced', '75', '300.0000'),
-('FBALL01', 'Football for Beginners', '90', '450.0000'),
-('FBALL02', 'Football for Advanced', '90', '450.0000');
+('BKBLL01', 'Jonir Basketball', '75', 600.0000),
+('BKBLL02', 'Advanced Basketball', '80', 450.0000),
+('BSBLL01', 'Baseball for Beginners', '80', 450.0000),
+('BSBLL02', 'Baseball for Advanced', '75', 300.0000),
+('FBALL01', 'Football for Beginners', '90', 450.0000),
+('FBALL02', 'Football for Advanced', '90', 450.0000);
 
 -- --------------------------------------------------------
 
@@ -302,7 +303,7 @@ CREATE TABLE `teachers` (
   `CountryCode` varchar(2) DEFAULT NULL,
   `Gender` varchar(1) DEFAULT NULL,
   `BirthDate` varchar(19) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teachers`
